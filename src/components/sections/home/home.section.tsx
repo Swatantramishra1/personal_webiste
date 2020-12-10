@@ -1,6 +1,8 @@
-import React from "react"
+import React from "react";
+import Popup from 'reactjs-popup';
 
 import "./home.section.scss";
+import { ModalComponent } from "./modal.component";
 
 export const HomeSection = () => {
     return (
@@ -14,6 +16,8 @@ export const HomeSection = () => {
                  Specialized in building (and occasionally designing) exceptional websites, applications, and everything in between.
                 </p>
            </div>
+
+           <ModalComponent></ModalComponent>
         </section>
     )
 }

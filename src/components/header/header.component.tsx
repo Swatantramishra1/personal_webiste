@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+import { Button, Modal } from "react-bootstrap";
 
 import "./header.component.scss";
 
 export const HeaderComponent = () => {
-
+    const [show, setShow] = useState(false);
+  
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    
     const scrollTo = (id: string) => {
         const elem = document.getElementById(id);
         if (!elem) {
@@ -20,15 +25,17 @@ export const HeaderComponent = () => {
 
         elem.scrollIntoView(true);
     }
-   const handleClick = (e: any) => {
-        const target = e.target;
-        const id = target.innerText.toLowerCase();
-        if(id === "resume") {
-            window.open("https://www.linkedin.com/in/swatantra3/detail/overlay-view/urn:li:fsd_profileTreasuryMedia:(ACoAAAx_sekB0ho0jeW3Ak_e8GNIAr8mxbw8e9M,1600189911031)/");
-            return;
-        }
-        
-        scrollTo(id);
+   const handleClick = () => {
+        // const target = e.target;
+        // const id = target.innerText.toLowerCase();
+        // if(id === "resume") {
+        //     window.open('../../resume.pdf', '_blank', 'fullscreen=yes');
+        //     return;
+        // }
+
+        // scrollTo(id);
+
+        handleShow();
     }
 
     return (
@@ -38,17 +45,28 @@ export const HeaderComponent = () => {
             </div>
             <div className="menu">
                 
-                <ol onClick={(e) => handleClick(e) }>
-                    <li >About</li>
+                <button onClick={() => handleClick()}> Resume </button>
+                {/* <ol onClick={(e) => handleClick(e) }> */}
+                    {/* <li >About</li>
                     <li >Work</li>
                     <li >Experience</li>
-                    <li >Contact</li>
-                    <li >Resume</li>
-                </ol>
+                    <li >Contact</li> */}
+                    {/* <li >Resume</li> */}
+                {/* </ol> */}
                 {/* <div className="about">
                     01. About
                 </div> */}
             </div>
+
+         
+
+      <Modal show={show} onHide={handleClose}  size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
+         
+         <Modal.Body>
+         <iframe id="test" width="100%" height="300" scrolling="no" frameBorder="no" allow="autoplay" src="./resume.pdf"></iframe>
+         {/* <iframe src="../../../resume.pdf"  frameborder="0"></iframe> */}
+         </Modal.Body>
+       </Modal>
         </div>
     )
 }
