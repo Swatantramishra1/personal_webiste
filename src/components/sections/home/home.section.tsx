@@ -1,5 +1,4 @@
 import React from "react";
-import Popup from 'reactjs-popup';
 
 import "./home.section.scss";
 import { ModalComponent } from "./modal.component";
